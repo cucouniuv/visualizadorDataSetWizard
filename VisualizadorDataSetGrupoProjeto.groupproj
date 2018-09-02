@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{79C2A2CB-AFC5-49E1-86C7-15F0748FF830}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="VisualizadorDataSet.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="VisualizadorDataSetMenu.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="VisualizadorDataSet">
+        <MSBuild Projects="VisualizadorDataSet.dproj"/>
+    </Target>
+    <Target Name="VisualizadorDataSet:Clean">
+        <MSBuild Projects="VisualizadorDataSet.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="VisualizadorDataSet:Make">
+        <MSBuild Projects="VisualizadorDataSet.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="VisualizadorDataSetMenu">
+        <MSBuild Projects="VisualizadorDataSetMenu.dproj"/>
+    </Target>
+    <Target Name="VisualizadorDataSetMenu:Clean">
+        <MSBuild Projects="VisualizadorDataSetMenu.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="VisualizadorDataSetMenu:Make">
+        <MSBuild Projects="VisualizadorDataSetMenu.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="VisualizadorDataSet;VisualizadorDataSetMenu"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="VisualizadorDataSet:Clean;VisualizadorDataSetMenu:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="VisualizadorDataSet:Make;VisualizadorDataSetMenu:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
